@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="01/29/2024 08:53:01" ReportInfo.Modified="05/22/2024 11:59:19" ReportInfo.CreatorVersion="2024.1.4.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="ReportData" ReferenceName="ReportData" DataType="reports_web_api.Models.Coupons.FreeCoupons.FreeCouponsPrintModel[], reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Enabled="true">
+      <Column Name="DateFrom" DataType="System.DateOnly"/>
+      <Column Name="DateTo" DataType="System.DateOnly"/>
+      <Column Name="CouponsType" DataType="System.String"/>
+    </BusinessObjectDataSource>
+    <BusinessObjectDataSource Name="MatrixGroupedFreeCoupons" ReferenceName="MatrixGroupedFreeCoupons" DataType="System.Collections.Generic.List`1[[reports_web_api.Models.Coupons.FreeCoupons.GroupedFreeCoupons, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+      <Column Name="Post" DataType="System.String"/>
+      <Column Name="TypeResearch" DataType="System.String"/>
+      <Column Name="Date" DataType="System.DateOnly"/>
+      <Column Name="Amount" DataType="System.Int32"/>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" LeftMargin="30" Guides="0" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="642.6" Height="18.9" CanGrow="true"/>
+    <PageHeaderBand Name="PageHeader1" Top="20.73" Width="642.6" Height="18.9" CanGrow="true"/>
+    <DataBand Name="Data1" Top="81.09" Width="642.6" Height="52.75" CanGrow="true">
+      <MatrixObject Name="Matrix1" Width="235.31" Height="52.75" FixedRows="1" FixedColumns="2" DataSource="MatrixGroupedFreeCoupons">
+        <MatrixColumns>
+          <Header Expression="[MatrixGroupedFreeCoupons.Date]" Totals="false"/>
+        </MatrixColumns>
+        <MatrixRows>
+          <Header Expression="[MatrixGroupedFreeCoupons.Post]" Totals="false"/>
+          <Header Expression="[MatrixGroupedFreeCoupons.TypeResearch]" Totals="false"/>
+        </MatrixRows>
+        <MatrixCells>
+          <Cell Expression="[MatrixGroupedFreeCoupons.Amount]"/>
+        </MatrixCells>
+        <TableColumn Name="Column1" Width="89.38" AutoSize="true"/>
+        <TableColumn Name="Column2" Width="94.05" AutoSize="true"/>
+        <TableColumn Name="Column3" Width="51.88" AutoSize="true"/>
+        <TableRow Name="Row1" Height="36.6" AutoSize="true">
+          <TableCell Name="Cell1" Border.Lines="All" Text="Должность врача" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 8pt"/>
+          <TableCell Name="Cell2" Border.Lines="All" Text="Вид исследования" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 8pt"/>
+          <TableCell Name="Cell5" Border.Lines="All" Text="[Date]" HorzAlign="Center" VertAlign="Center" Angle="270" Font="Times New Roman, 8pt"/>
+        </TableRow>
+        <TableRow Name="Row2" Height="16.15" AutoSize="true">
+          <TableCell Name="Cell3" Border.Lines="All" Text="[Post]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 8pt"/>
+          <TableCell Name="Cell4" Border.Lines="All" Text="[TypeResearch]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 8pt"/>
+          <TableCell Name="Cell6" Border.Lines="All" Text="[Amount]" HorzAlign="Right" VertAlign="Center" Font="Times New Roman, 8pt"/>
+        </TableRow>
+      </MatrixObject>
+      <DataHeaderBand Name="DataHeader1" Top="41.46" Width="642.6" Height="37.8" CanGrow="true" RepeatOnEveryPage="true">
+        <TextObject Name="Text1" Width="642.6" Height="18.9" CanGrow="true" Text="&lt;b&gt;О наличии талонов.&lt;/b&gt;&#13;&#10;&lt;b&gt;за период:&lt;/b&gt; [ReportData.DateFrom] - [ReportData.DateTo]" HorzAlign="Center" Font="Times New Roman, 8pt" TextRenderType="HtmlTags">
+          <Formats>
+            <GeneralFormat/>
+            <GeneralFormat/>
+          </Formats>
+        </TextObject>
+        <TextObject Name="Text2" Top="18.9" Width="642.6" Height="18.9" CanGrow="true" Text="&lt;b&gt;Талоны:&lt;/b&gt; [ReportData.CouponsType]" VertAlign="Bottom" Font="Times New Roman, 8pt" TextRenderType="HtmlTags"/>
+      </DataHeaderBand>
+    </DataBand>
+  </ReportPage>
+</Report>

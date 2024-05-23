@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="01/29/2024 08:53:01" ReportInfo.Modified="05/22/2024 12:10:05" ReportInfo.CreatorVersion="2024.1.4.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="ReportData" ReferenceName="ReportData" DataType="System.Collections.Generic.List`1[[reports_web_api.Models.Coupons.FreeCouponsByDoctor.FreeCouponsByDoctorPrintModel, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+      <Column Name="DateFrom" DataType="System.DateOnly"/>
+      <Column Name="DateTo" DataType="System.DateOnly"/>
+      <Column Name="Doctor" DataType="reports_web_api.Domain.User, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.Guid"/>
+        <Column Name="UserFio" DataType="System.String"/>
+        <Column Name="PostId" DataType="System.Int32"/>
+        <Column Name="Post" DataType="System.String"/>
+      </Column>
+      <BusinessObjectDataSource Name="GroupedFreeCouponsByDoctor" DataType="System.Collections.Generic.List`1[[reports_web_api.Models.Coupons.FreeCouponsByDoctor.GroupedFreeCouponsByDoctor, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+        <Column Name="Date" DataType="System.DateOnly"/>
+        <BusinessObjectDataSource Name="freeCouponsByDoctors" DataType="System.Collections.Generic.List`1[[reports_web_api.Models.Coupons.FreeCouponsByDoctor.FreeCouponsByDoctor, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+          <Column Name="ActualId" DataType="System.Int32"/>
+          <Column Name="CouponNumber" DataType="System.String"/>
+          <Column Name="TimeStart" DataType="System.String"/>
+          <Column Name="WhereOrder" DataType="System.String"/>
+          <Column Name="DateOrdered" DataType="System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+          <Column Name="UserOrdered" DataType="reports_web_api.Domain.User, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="UserId" DataType="System.Guid"/>
+            <Column Name="UserFio" DataType="System.String"/>
+            <Column Name="PostId" DataType="System.Int32"/>
+            <Column Name="Post" DataType="System.String"/>
+          </Column>
+          <Column Name="DateGiven" DataType="System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+          <Column Name="UserGiven" DataType="reports_web_api.Domain.User, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="UserId" DataType="System.Guid"/>
+            <Column Name="UserFio" DataType="System.String"/>
+            <Column Name="PostId" DataType="System.Int32"/>
+            <Column Name="Post" DataType="System.String"/>
+          </Column>
+        </BusinessObjectDataSource>
+      </BusinessObjectDataSource>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" LeftMargin="30" Guides="0" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="642.6" Height="18.9" CanGrow="true"/>
+    <PageHeaderBand Name="PageHeader1" Top="21.03" Width="642.6" Height="18.9" CanGrow="true"/>
+    <DataBand Name="Data1" Top="91.45" Width="642.6" Height="9.45" CanGrow="true" CanBreak="true" DataSource="GroupedFreeCouponsByDoctor">
+      <DataHeaderBand Name="DataHeader1" Top="42.07" Width="642.6" Height="47.25" KeepWithData="true" RepeatOnEveryPage="true">
+        <TextObject Name="Text23" Width="642.6" Height="47.25" CanGrow="true" GrowToBottom="true" Text="&lt;b&gt;Талоны&lt;/b&gt;&#13;&#10;&lt;b&gt;врача: &lt;/b&gt;[ReportData.Doctor.UserFio] [ReportData.Doctor.Post]&#13;&#10;&lt;b&gt;за период с: &lt;/b&gt;[ReportData.DateFrom] &lt;b&gt;по: &lt;/b&gt;[ReportData.DateTo]" HorzAlign="Center" Font="Times New Roman, 9pt" TextRenderType="HtmlTags">
+          <Formats>
+            <GeneralFormat/>
+            <GeneralFormat/>
+            <GeneralFormat/>
+            <GeneralFormat/>
+          </Formats>
+        </TextObject>
+      </DataHeaderBand>
+      <DataBand Name="Data2" Top="152.42" Width="642.6" Height="28.35" CanGrow="true" DataSource="freeCouponsByDoctors">
+        <TextObject Name="Text26" Width="47.25" Height="28.35" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedFreeCouponsByDoctor.freeCouponsByDoctors.CouponNumber]" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text28" Left="47.25" Width="103.95" Height="28.35" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedFreeCouponsByDoctor.freeCouponsByDoctors.TimeStart]" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text29" Left="151.2" Width="94.5" Height="28.35" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedFreeCouponsByDoctor.freeCouponsByDoctors.WhereOrder]" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text31" Left="245.7" Width="85.05" Height="28.35" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedFreeCouponsByDoctor.freeCouponsByDoctors.DateOrdered]" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text34" Left="330.75" Width="113.4" Height="28.35" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedFreeCouponsByDoctor.freeCouponsByDoctors.UserOrdered.UserFio]" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text36" Left="444.15" Width="85.05" Height="28.35" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedFreeCouponsByDoctor.freeCouponsByDoctors.DateGiven]" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text38" Left="529.2" Width="113.4" Height="28.35" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedFreeCouponsByDoctor.freeCouponsByDoctors.UserGiven.UserFio]" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <DataHeaderBand Name="DataHeader2" Top="103.03" Width="642.6" Height="47.25" KeepWithData="true" RepeatOnEveryPage="true">
+          <TextObject Name="Text30" Width="642.6" Height="18.9" CanGrow="true" GrowToBottom="true" Text="&lt;b&gt;На дату: &lt;/b&gt;[ReportData.GroupedFreeCouponsByDoctor.Date]" Font="Times New Roman, 9pt" TextRenderType="HtmlTags"/>
+          <TextObject Name="Text35" Left="444.15" Top="18.9" Width="85.05" Height="28.35" Border.Lines="All" GrowToBottom="true" Text="Когда&#13;&#10;выдан" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+          <TextObject Name="Text1" Top="18.9" Width="47.25" Height="28.35" Border.Lines="All" GrowToBottom="true" Text="№ талона" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+          <TextObject Name="Text24" Left="47.25" Top="18.9" Width="103.95" Height="28.35" Border.Lines="All" GrowToBottom="true" Text="Дата и время&#13;&#10;талона" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+          <TextObject Name="Text25" Left="151.2" Top="18.9" Width="94.5" Height="28.35" Border.Lines="All" GrowToBottom="true" Text="Где&#13;&#10;заказан" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+          <TextObject Name="Text32" Left="245.7" Top="18.9" Width="85.05" Height="28.35" Border.Lines="All" GrowToBottom="true" Text="Когда&#13;&#10;заказан" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+          <TextObject Name="Text33" Left="330.75" Top="18.9" Width="113.4" Height="28.35" Border.Lines="All" GrowToBottom="true" Text="Кем&#13;&#10;заказан" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+          <TextObject Name="Text37" Left="529.2" Top="18.9" Width="113.4" Height="28.35" Border.Lines="All" GrowToBottom="true" Text="Кем&#13;&#10;выдан" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        </DataHeaderBand>
+      </DataBand>
+    </DataBand>
+  </ReportPage>
+</Report>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="01/29/2024 08:53:01" ReportInfo.Modified="05/22/2024 12:28:33" ReportInfo.CreatorVersion="2024.1.0.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="rangeDates" ReferenceName="rangeDates" DataType="System.Int32" Enabled="true">
+      <Column Name="DateFrom" DataType="System.Int32"/>
+      <Column Name="DateTo" DataType="System.Int32"/>
+    </BusinessObjectDataSource>
+    <BusinessObjectDataSource Name="ReportData" ReferenceName="ReportData" DataType="System.Int32" Enabled="true">
+      <Column Name="Doctor" DataType="System.Int32">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="UserId" DataType="System.Guid"/>
+        <Column Name="UserFio" DataType="System.String"/>
+        <Column Name="PostId" DataType="System.Int32"/>
+        <Column Name="Post" DataType="System.String"/>
+      </Column>
+      <BusinessObjectDataSource Name="GroupedListPatientsForMCPSelection" DataType="System.Int32" Enabled="true">
+        <Column Name="Number" DataType="System.Int32"/>
+        <Column Name="TimeStart" DataType="System.String"/>
+        <Column Name="NumberCard" DataType="System.Int32"/>
+        <Column Name="Patient" DataType="System.Int32">
+          <Column Name="Id" DataType="System.Int32"/>
+          <Column Name="ActualId" DataType="System.Int32"/>
+          <Column Name="PatientFio" DataType="System.String"/>
+          <Column Name="BirtDate" DataType="System.Int32"/>
+          <Column Name="Address" DataType="System.String"/>
+          <Column Name="CardNumber" DataType="System.String"/>
+        </Column>
+        <Column Name="Note" DataType="System.String"/>
+      </BusinessObjectDataSource>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" LeftMargin="30" Guides="0" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="642.6" Height="18.9" CanGrow="true"/>
+    <PageHeaderBand Name="PageHeader1" Top="21.03" Width="642.6" Height="18.9" CanGrow="true"/>
+    <DataBand Name="Data1" Top="110.35" Width="642.6" CanGrow="true" CanBreak="true" DataSource="ReportData">
+      <DataHeaderBand Name="DataHeader1" Top="42.07" Width="642.6" Height="66.15" KeepWithData="true" RepeatOnEveryPage="true">
+        <TextObject Name="Text1" Top="37.8" Width="47.25" Height="28.35" Border.Lines="All" CanGrow="true" Text="№" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text2" Left="47.25" Top="37.8" Width="56.7" Height="28.35" Border.Lines="All" CanGrow="true" Text="Время&#13;&#10;талона" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text3" Left="103.95" Top="37.8" Width="66.15" Height="28.35" Border.Lines="All" CanGrow="true" Text="№ карты" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text4" Left="170.1" Top="37.8" Width="103.95" Height="28.35" Border.Lines="All" CanGrow="true" Text="Ф.И.О. больного" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text5" Left="274.05" Top="37.8" Width="75.6" Height="28.35" Border.Lines="All" CanGrow="true" Text="Дата&#13;&#10;рождения" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text6" Left="349.65" Top="37.8" Width="179.55" Height="28.35" Border.Lines="All" CanGrow="true" Text="Место жительства пациента" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text7" Left="529.2" Top="37.8" Width="113.4" Height="28.35" Border.Lines="All" CanGrow="true" Text="Примечания" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text23" Width="642.6" Height="37.8" CanGrow="true" Text="&lt;b&gt;Список пациентов на прием к врачу&lt;/b&gt;&#13;&#10;[rangeDates.DateFrom] - [rangeDates.DateTo]" HorzAlign="Center" Font="Times New Roman, 9pt" TextRenderType="HtmlTags">
+          <Formats>
+            <GeneralFormat/>
+            <GeneralFormat/>
+          </Formats>
+        </TextObject>
+      </DataHeaderBand>
+      <DataBand Name="Data2" Top="133.52" Width="642.6" Height="18.9" CanGrow="true" CanBreak="true" DataSource="GroupedListPatientsForMCPSelection">
+        <TextObject Name="Text13" Left="349.65" Width="179.55" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedListPatientsForMCPSelection.Patient.Address]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text8" Width="47.25" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedListPatientsForMCPSelection.Number]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text9" Left="47.25" Width="56.7" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedListPatientsForMCPSelection.TimeStart]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text10" Left="103.95" Width="66.15" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedListPatientsForMCPSelection.Patient.CardNumber]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text11" Left="170.1" Width="103.95" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedListPatientsForMCPSelection.Patient.PatientFio]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text12" Left="274.05" Width="75.6" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedListPatientsForMCPSelection.Patient.BirtDate]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text14" Left="529.2" Width="113.4" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedListPatientsForMCPSelection.Note]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <DataHeaderBand Name="DataHeader2" Top="112.48" Width="642.6" Height="18.9" KeepWithData="true" RepeatOnEveryPage="true">
+          <TextObject Name="Text16" Width="642.6" Height="18.9" Border.Lines="Left, Right, Top" Fill.Color="Silver" CanGrow="true" GrowToBottom="true" Text="[ReportData.Doctor.UserFio] [ReportData.Doctor.Post]" VertAlign="Center" Font="Times New Roman, 9pt">
+            <Formats>
+              <GeneralFormat/>
+              <GeneralFormat/>
+            </Formats>
+          </TextObject>
+        </DataHeaderBand>
+      </DataBand>
+    </DataBand>
+  </ReportPage>
+</Report>

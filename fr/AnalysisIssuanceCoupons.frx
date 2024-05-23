@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="01/29/2024 08:53:01" ReportInfo.Modified="05/22/2024 12:57:19" ReportInfo.CreatorVersion="2024.1.4.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="ReportData" ReferenceName="ReportData" DataType="reports_web_api.Models.Coupons.AnalysisIssuanceCoupons.AnalysisIssuanceCouponsPrintModel[], reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Enabled="true">
+      <Column Name="DateFrom" DataType="System.DateOnly"/>
+      <Column Name="DateTo" DataType="System.DateOnly"/>
+      <BusinessObjectDataSource Name="GroupedAnalysisIssuanceCoupons" DataType="System.Collections.Generic.List`1[[reports_web_api.Models.Coupons.AnalysisIssuanceCoupons.GroupedAnalysisIssuanceCoupons, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+        <Column Name="Doctor" DataType="reports_web_api.Domain.User, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Column Name="Id" DataType="System.Int32"/>
+          <Column Name="UserId" DataType="System.Guid"/>
+          <Column Name="UserFio" DataType="System.String"/>
+          <Column Name="PostId" DataType="System.Int32"/>
+          <Column Name="Post" DataType="System.String"/>
+        </Column>
+        <BusinessObjectDataSource Name="AnalysisIssuanceCoupons" DataType="System.Collections.Generic.List`1[[reports_web_api.Models.Coupons.AnalysisIssuanceCoupons.AnalysisIssuanceCoupons, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+          <Column Name="UserGiven" DataType="reports_web_api.Domain.User, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+            <Column Name="Id" DataType="System.Int32"/>
+            <Column Name="UserId" DataType="System.Guid"/>
+            <Column Name="UserFio" DataType="System.String"/>
+            <Column Name="PostId" DataType="System.Int32"/>
+            <Column Name="Post" DataType="System.String"/>
+          </Column>
+          <Column Name="Date" DataType="System.DateOnly"/>
+          <Column Name="Amount" DataType="System.Int32"/>
+          <Column Name="AmountGiven" DataType="System.Int32"/>
+          <Column Name="AmountCancellation" DataType="System.Int32"/>
+        </BusinessObjectDataSource>
+      </BusinessObjectDataSource>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" LeftMargin="30" Guides="0" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="642.6" Height="18.9" CanGrow="true"/>
+    <PageHeaderBand Name="PageHeader1" Top="21.03" Width="642.6" Height="18.9" CanGrow="true"/>
+    <DataBand Name="Data1" Top="110.35" Width="642.6" CanGrow="true" CanBreak="true" DataSource="GroupedAnalysisIssuanceCoupons">
+      <DataHeaderBand Name="DataHeader1" Top="42.07" Width="642.6" Height="66.15" KeepWithData="true" RepeatOnEveryPage="true">
+        <TextObject Name="Text1" Left="113.4" Top="37.8" Width="245.7" Height="28.35" Border.Lines="All" CanGrow="true" Text="Кто выдал" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text2" Top="37.8" Width="113.4" Height="28.35" Border.Lines="All" CanGrow="true" Text="Дата" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text17" Left="359.1" Top="37.8" Width="283.5" Height="13.23" Border.Lines="All" Text="Количество талонов" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text18" Left="359.1" Top="51.03" Width="94.5" Height="15.12" Border.Lines="All" Text="Общее" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text19" Left="453.6" Top="51.03" Width="94.5" Height="15.12" Border.Lines="All" Text="Выдано" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text20" Left="548.1" Top="51.03" Width="94.5" Height="15.12" Border.Lines="All" Text="Неявка" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text23" Width="642.6" Height="37.8" CanGrow="true" Text="&lt;b&gt;Анализи выдачи талонов&lt;/b&gt;&#13;&#10;[ReportData.DateFrom] - [ReportData.DateTo]" HorzAlign="Center" Font="Times New Roman, 9pt" TextRenderType="HtmlTags">
+          <Formats>
+            <GeneralFormat/>
+            <GeneralFormat/>
+          </Formats>
+        </TextObject>
+      </DataHeaderBand>
+      <DataBand Name="Data2" Top="133.52" Width="642.6" Height="18.9" CanGrow="true" CanBreak="true" DataSource="AnalysisIssuanceCoupons">
+        <TextObject Name="Text8" Left="113.4" Width="245.7" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedAnalysisIssuanceCoupons.AnalysisIssuanceCoupons.UserGiven.UserFio] [ReportData.GroupedAnalysisIssuanceCoupons.AnalysisIssuanceCoupons.UserGiven.Post]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt">
+          <Formats>
+            <GeneralFormat/>
+            <GeneralFormat/>
+          </Formats>
+        </TextObject>
+        <TextObject Name="Text9" Width="113.4" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedAnalysisIssuanceCoupons.AnalysisIssuanceCoupons.Date]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text10" Left="359.1" Width="94.5" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedAnalysisIssuanceCoupons.AnalysisIssuanceCoupons.Amount]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text21" Left="453.6" Width="94.5" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedAnalysisIssuanceCoupons.AnalysisIssuanceCoupons.AmountGiven]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text22" Left="548.1" Width="94.5" Height="18.9" Border.Lines="All" CanGrow="true" GrowToBottom="true" Text="[ReportData.GroupedAnalysisIssuanceCoupons.AnalysisIssuanceCoupons.AmountCancellation]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <DataHeaderBand Name="DataHeader2" Top="112.48" Width="642.6" Height="18.9" KeepWithData="true" RepeatOnEveryPage="true">
+          <TextObject Name="Text16" Width="359.1" Height="18.9" Border.Lines="Left, Right, Top" Fill.Color="Silver" GrowToBottom="true" Text="[ReportData.GroupedAnalysisIssuanceCoupons.Doctor.UserFio] [ReportData.GroupedAnalysisIssuanceCoupons.Doctor.Post]" VertAlign="Center" Font="Times New Roman, 9pt">
+            <Formats>
+              <GeneralFormat/>
+              <GeneralFormat/>
+            </Formats>
+          </TextObject>
+          <TextObject Name="Text24" Left="359.1" Width="94.5" Height="18.9" Border.Lines="Left, Right, Top" GrowToBottom="true" VertAlign="Center" Font="Times New Roman, 9pt">
+            <Formats>
+              <GeneralFormat/>
+              <GeneralFormat/>
+            </Formats>
+          </TextObject>
+          <TextObject Name="Text25" Left="453.6" Width="94.5" Height="18.9" Border.Lines="Left, Right, Top" GrowToBottom="true" VertAlign="Center" Font="Times New Roman, 9pt">
+            <Formats>
+              <GeneralFormat/>
+              <GeneralFormat/>
+            </Formats>
+          </TextObject>
+          <TextObject Name="Text26" Left="548.1" Width="94.5" Height="18.9" Border.Lines="Left, Right, Top" GrowToBottom="true" VertAlign="Center" Font="Times New Roman, 9pt">
+            <Formats>
+              <GeneralFormat/>
+              <GeneralFormat/>
+            </Formats>
+          </TextObject>
+        </DataHeaderBand>
+      </DataBand>
+    </DataBand>
+  </ReportPage>
+</Report>

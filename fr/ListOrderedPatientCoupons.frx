@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="01/29/2024 08:53:01" ReportInfo.Modified="05/22/2024 12:21:06" ReportInfo.CreatorVersion="2024.1.4.0">
+  <Dictionary>
+    <BusinessObjectDataSource Name="ReportData" ReferenceName="ReportData" DataType="System.Collections.Generic.List`1[[reports_web_api.Models.Coupons.ListOrderedPatientCoupons.ListOrderedPatientCouponsPrintModel, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+      <Column Name="DateFrom" DataType="System.DateOnly"/>
+      <Column Name="DateTo" DataType="System.DateOnly"/>
+      <Column Name="Patient" DataType="reports_web_api.Domain.Patient, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+        <Column Name="Id" DataType="System.Int32"/>
+        <Column Name="ActualId" DataType="System.Int32"/>
+        <Column Name="PatientFio" DataType="System.String"/>
+        <Column Name="BirtDate" DataType="System.Nullable`1[[System.DateOnly, System.Private.CoreLib, Version=7.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]"/>
+        <Column Name="Address" DataType="System.String"/>
+        <Column Name="CardNumber" DataType="System.String"/>
+      </Column>
+      <BusinessObjectDataSource Name="ListOrderedPatientCoupons" DataType="System.Collections.Generic.List`1[[reports_web_api.Models.Coupons.ListOrderedPatientCoupons.ListOrderedPatientCoupons, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]" Enabled="true">
+        <Column Name="Date" DataType="System.DateOnly"/>
+        <Column Name="TimeStart" DataType="System.TimeOnly"/>
+        <Column Name="Doctor" DataType="reports_web_api.Domain.User, reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <Column Name="Id" DataType="System.Int32"/>
+          <Column Name="UserId" DataType="System.Guid"/>
+          <Column Name="UserFio" DataType="System.String"/>
+          <Column Name="PostId" DataType="System.Int32"/>
+          <Column Name="Post" DataType="System.String"/>
+        </Column>
+        <Column Name="isGivenCoupon" DataType="System.Boolean" BindableControl="CheckBox"/>
+        <Column Name="isExaminationPerformed" DataType="System.Boolean" BindableControl="CheckBox"/>
+      </BusinessObjectDataSource>
+    </BusinessObjectDataSource>
+  </Dictionary>
+  <ReportPage Name="Page1" LeftMargin="30" Guides="0" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="642.6" Height="18.9" CanGrow="true"/>
+    <PageHeaderBand Name="PageHeader1" Top="21.03" Width="642.6" Height="18.9" CanGrow="true"/>
+    <DataBand Name="Data1" Top="148.15" Width="642.6" Height="28.35" CanGrow="true" CanBreak="true" DataSource="ListOrderedPatientCoupons">
+      <TextObject Name="Text26" Left="151.2" Width="283.5" Height="28.35" Border.Lines="All" CanGrow="true" Text="[ReportData.ListOrderedPatientCoupons.Doctor.UserFio] [ReportData.ListOrderedPatientCoupons.Doctor.Post]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt">
+        <Formats>
+          <GeneralFormat/>
+          <GeneralFormat/>
+        </Formats>
+      </TextObject>
+      <TextObject Name="Text27" Width="151.2" Height="28.35" Border.Lines="All" CanGrow="true" Text="[ReportData.ListOrderedPatientCoupons.Date]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+      <TextObject Name="Text28" Left="434.7" Width="94.5" Height="28.35" Border.Lines="All" CanGrow="true" Text="[IIf(ToBoolean([ReportData.ListOrderedPatientCoupons.isGivenCoupon]), &quot;+&quot;, &quot;&quot;)]" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+      <TextObject Name="Text29" Left="529.2" Width="113.4" Height="28.35" Border.Lines="All" CanGrow="true" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+      <DataHeaderBand Name="DataHeader1" Top="42.07" Width="642.6" Height="103.95" KeepWithData="true" RepeatOnEveryPage="true">
+        <TextObject Name="Text1" Left="151.2" Top="75.6" Width="283.5" Height="28.35" Border.Lines="All" GrowToBottom="true" Text="Врач" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text2" Top="75.6" Width="151.2" Height="28.35" Border.Lines="All" GrowToBottom="true" Text="Дата" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text23" Width="642.6" Height="75.6" CanGrow="true" GrowToBottom="true" Text="&lt;b&gt;Талоны пациента&lt;/b&gt;&#13;&#10;[ReportData.Patient.PatientFio]&#13;&#10;Д. р. [ReportData.Patient.BirtDate]&#13;&#10;[ReportData.Patient.Address]&#13;&#10;&lt;b&gt;за период с: &lt;/b&gt;[ReportData.DateFrom] &lt;b&gt;по: &lt;/b&gt;[ReportData.DateTo]" HorzAlign="Center" Font="Times New Roman, 9pt" TextRenderType="HtmlTags">
+          <Formats>
+            <GeneralFormat/>
+            <GeneralFormat/>
+            <GeneralFormat/>
+            <GeneralFormat/>
+            <GeneralFormat/>
+          </Formats>
+        </TextObject>
+        <TextObject Name="Text24" Left="434.7" Top="75.6" Width="94.5" Height="28.35" Border.Lines="All" GrowToBottom="true" Text="Талон выдан&#13;&#10;пациенту" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+        <TextObject Name="Text25" Left="529.2" Top="75.6" Width="113.4" Height="28.35" Border.Lines="All" GrowToBottom="true" Text="Осмотр выполнен&#13;&#10;врачем" HorzAlign="Center" VertAlign="Center" Font="Times New Roman, 9pt"/>
+      </DataHeaderBand>
+    </DataBand>
+  </ReportPage>
+</Report>
