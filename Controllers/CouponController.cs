@@ -37,7 +37,7 @@ namespace reports_web_api.Controllers
             [FromQuery] int[] doctorId)
         {
             #region process reportData
-            DateOnly DateFrom = dateFrom.HasValue ? DateOnly.FromDateTime(dateFrom.Value) : DateOnly.FromDateTime(DateTime.Today);
+            DateOnly DateFrom = dateFrom.HasValue ? DateOnly.FromDateTime(dateFrom.Value) : new DateOnly(2000, 1, 1);
             DateOnly DateTo = dateTo.HasValue ? DateOnly.FromDateTime(dateTo.Value) : DateOnly.FromDateTime(DateTime.Today);
 
             var Coupons = _couponService.GetAllCoupons()
@@ -110,7 +110,7 @@ namespace reports_web_api.Controllers
             [FromQuery] int[] DoctorId)
         {
             #region process reportData
-            DateOnly DateFrom = dateFrom.HasValue ? DateOnly.FromDateTime(dateFrom.Value) : DateOnly.FromDateTime(DateTime.Today);
+            DateOnly DateFrom = dateFrom.HasValue ? DateOnly.FromDateTime(dateFrom.Value) : new DateOnly(2000, 1, 1);
             DateOnly DateTo = dateTo.HasValue ? DateOnly.FromDateTime(dateTo.Value) : DateOnly.FromDateTime(DateTime.Today);
 
             var Coupons = _couponService.GetAllCoupons()
@@ -190,7 +190,7 @@ namespace reports_web_api.Controllers
             [FromQuery] int[] doctorId)
         {
             #region process reportData
-            DateOnly DateFrom = dateFrom.HasValue ? DateOnly.FromDateTime(dateFrom.Value) : DateOnly.FromDateTime(DateTime.Today);
+            DateOnly DateFrom = dateFrom.HasValue ? DateOnly.FromDateTime(dateFrom.Value) : new DateOnly(2000, 1, 1);
             DateOnly DateTo = dateTo.HasValue ? DateOnly.FromDateTime(dateTo.Value) : DateOnly.FromDateTime(DateTime.Today);
 
             var cancellations = _couponService.GetAllCouponCancellations();
@@ -267,7 +267,7 @@ namespace reports_web_api.Controllers
             [FromQuery] int patientId)
         {
             #region process reportData
-            DateOnly DateFrom = dateFrom.HasValue ? DateOnly.FromDateTime(dateFrom.Value) : DateOnly.FromDateTime(DateTime.Today);
+            DateOnly DateFrom = dateFrom.HasValue ? DateOnly.FromDateTime(dateFrom.Value) : new DateOnly(2000, 1, 1);
             DateOnly DateTo = dateTo.HasValue ? DateOnly.FromDateTime(dateTo.Value) : DateOnly.FromDateTime(DateTime.Today);
 
             var Coupons = _couponService.GetAllCoupons()
@@ -337,7 +337,7 @@ namespace reports_web_api.Controllers
             [FromQuery] int[] statusId)
         {
             #region process reportData
-            DateOnly DateFrom = dateFrom.HasValue ? DateOnly.FromDateTime(dateFrom.Value) : DateOnly.FromDateTime(DateTime.Today);
+            DateOnly DateFrom = dateFrom.HasValue ? DateOnly.FromDateTime(dateFrom.Value) : new DateOnly(2000, 1, 1);
             DateOnly DateTo = dateTo.HasValue ? DateOnly.FromDateTime(dateTo.Value) : DateOnly.FromDateTime(DateTime.Today);
 
             var Coupons = _couponService.GetAllCoupons()

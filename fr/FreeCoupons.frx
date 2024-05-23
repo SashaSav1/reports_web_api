@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Report ScriptLanguage="CSharp" ReportInfo.Created="01/29/2024 08:53:01" ReportInfo.Modified="05/22/2024 11:59:19" ReportInfo.CreatorVersion="2024.1.4.0">
+<Report ScriptLanguage="CSharp" ReportInfo.Created="01/29/2024 08:53:01" ReportInfo.Modified="05/23/2024 11:31:47" ReportInfo.CreatorVersion="2024.1.4.0">
   <Dictionary>
     <BusinessObjectDataSource Name="ReportData" ReferenceName="ReportData" DataType="reports_web_api.Models.Coupons.FreeCoupons.FreeCouponsPrintModel[], reports_web_api, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Enabled="true">
       <Column Name="DateFrom" DataType="System.DateOnly"/>
